@@ -2,7 +2,14 @@ import { Request, Response } from 'express';
 import Movie, {IMovieType} from "../Models/Movie";
 import movie from "../Models/Movie";
 import exp from "constants";
+type Tuser = {
+    _id: string,
+    email: string
+}
 
+interface IUser  extends Request{
+    user: Tuser
+}
 export const createMovie = async (req: Request, res: Response) => {
     try {
         const { title, description, url, releaseDate } = req.body;

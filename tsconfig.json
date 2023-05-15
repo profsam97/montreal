@@ -8,6 +8,6 @@
         "typeRoots": ["./types"],
         "types": ["node", "jest"]
     },
-    "include": ["src", "ignore.d.ts"],
+    "include": ["src", "types", "ignore.d.ts"],
     "exclude": ["node_modules"]
 }

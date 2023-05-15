@@ -8,6 +8,7 @@ module.exports = {
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     setupFilesAfterEnv: ['./src/test/movie.test.ts'],
+    setupFiles: ['./types/express/index.d.ts'],
     globals: {
         'ts-jest': {
             diagnostics: false,
