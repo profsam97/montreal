@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "env-cmd -f ./config/dev.env ts-node-dev --respawn --transpile-only  ./src/app.ts",
     "start": "node dist/app.js",
-    "postinstall": "tsc"
+    "build": "tsc",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
