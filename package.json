@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "env-cmd -f ./config/dev.env ts-node-dev --respawn --transpile-only  ./src/app.ts",
     "build": "esbuild app=./src/app.ts --bundle --minify --outdir=dist --packages=external --platform=node",
-    "start": "node dist"
+    "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "",
