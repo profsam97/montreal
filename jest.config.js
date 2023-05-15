@@ -1,3 +1,6 @@
+process.env.NODE_ENV = 'development';
+require('dotenv').config({path:'./config/dev.env'});
+
 module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'node',
@@ -12,6 +15,6 @@ module.exports = {
     globals: {
         'ts-jest': {
             diagnostics: false,
-        },
-    },
+        }
+    }
 };

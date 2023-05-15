@@ -5,14 +5,15 @@ import {User} from "../Models/User";
 export const tokenId = new mongoose.Types.ObjectId();
 export const userOne = {
     _id: tokenId,
-    email: 'proft@jfg.com',
+    email: 'profs@jfg.com',
     password: '1233333',
     tokens: [{
-        token: jwt.sign({_id: tokenId}, 'Montreal')
+        token: jwt.sign({_id: tokenId.toString()}, process.env.JWT_SECRET as string)
     }]
 
 }
 
 export const setUpDataBase   = async () => {
-    await new User(userOne).save()
+    const user = new User(userOne);
+    await user.save()
 }
