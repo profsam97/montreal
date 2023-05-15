@@ -5,7 +5,9 @@ export interface IMovieType extends mongoose.Document {
     title: string,
     description: string,
     url: string,
-    createdBy : string
+    createdBy : string,
+    createdAt: Date,
+    updatedAt: Date
 }
 
 const movieSchema = new mongoose.Schema({

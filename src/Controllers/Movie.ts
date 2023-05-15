@@ -27,7 +27,7 @@ export const createMovie = async (req: Request, res: Response) => {
         res.status(201).json({ message: 'Movie created successfully', movie });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(400).json({ message: 'Something went wrong' });
     }
 };
 
@@ -68,7 +68,7 @@ export const updateMovie = async (req: Request, res: Response) => {
         if (!isAllowedUpdates) return  res.status(400).send({message: 'Invalid updates'});
         movieData.forEach((data : string) => (movie as any)[data] = req.body[data]);
         await movie!.save()
-        res.status(200).send({message: 'Movie  Updated Successfully'})
+        res.status(200).send({message: 'Movie Updated Successfully'})
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });
