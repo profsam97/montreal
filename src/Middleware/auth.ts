@@ -15,6 +15,7 @@ export const auth : express.RequestHandler = async (req :Request  , res : Respon
         req.user = user;
         next();
     }
+
     catch (e) {
         console.log(e)
         res.status(403).send({error : 'Please Authenticate'})
