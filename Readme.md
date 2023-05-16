@@ -45,3 +45,12 @@ yarn dev
 Then open the browser and go to http://localhost:3000/
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the app running.
+
+## test  the App.
+
+The test file is located in /src/test
+
+Please ensure that the env file has been set up, as it won't work properly without 
+it.
+
+
