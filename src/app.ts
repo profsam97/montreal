@@ -18,5 +18,6 @@ export function startServer() {
 
     return server;
 }
-startServer()
+//remember to start this later
+// startServer()
 export default app;
