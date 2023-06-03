@@ -8,7 +8,7 @@
     "dev": "env-cmd -f ./config/dev.env ts-node-dev --respawn --transpile-only  ./src/app.ts",
     "build": "esbuild app=./src/app.ts --bundle --minify --outdir=dist --packages=external --platform=node",
     "start": "node dist/app.js",
-    "test": "jest --coverage --config=jest.config.js"
+    "test": "jest --detectOpenHandles  --forceExit --coverage --config=jest.config.js"
   },
   "keywords": [],
   "author": "",

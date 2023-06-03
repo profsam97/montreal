@@ -1,18 +1,20 @@
 import mongoose from 'mongoose';
 import request from 'supertest';
 import Movie from "../Models/Movie";
-import app from "../app";
+import app, {startServer} from "../app";
 import {setUpDataBase, userOne} from "./user";
 import {describe, expect, it,  beforeEach, beforeAll, afterAll} from '@jest/globals';
 import {User} from "../Models/User";
+let server : any;
 describe('Montech API', () => {
     beforeAll(async () => {
+        server = startServer()
         await mongoose.connect(process.env.Mongo_URL as string);
     }, 10000);
-    afterAll(async () => {
-        await mongoose.connection.close();
+    afterAll(  (done) => {
+         mongoose.connection.close();
+         server.close(done)
     });
-
     beforeEach(async () => {
         await User.deleteMany({});
         await  setUpDataBase();
@@ -117,7 +119,7 @@ describe('Montech API', () => {
         });
 
         it('should return a 400 error if the movie data is invalid', async () => {
-            const response = await request(app)
+             await request(app)
                 .post('/movie')
                 .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
                 .send({

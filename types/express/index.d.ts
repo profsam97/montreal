@@ -5,4 +5,10 @@ declare module 'express-serve-static-core'{
         user : Iuser;
         token : string;
     }
+    interface Application {
+        close(callback?: () => void): void;
+    }
+}
+declare module 'express' {
+
 }
