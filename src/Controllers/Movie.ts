@@ -13,6 +13,8 @@ interface IUser  extends Request{
 export const createMovie = async (req: Request, res: Response) => {
     try {
         const { title, description, url, releaseDate } = req.body;
+
+        if (!title) return  res.status(400).send({message: 'Bad request'})
         const user = req.user;
         const createdMovies : IMovieType[] = await Movie.find({createdBy: user._id})
         if (createdMovies.length >= 100) return res.status(400).send({message: 'You can not create more than 100 movies'});
