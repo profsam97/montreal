@@ -1,3 +1,7 @@
+## View the live url
+
+Open [montreal-production.up.railway.app](https://montreal-production.up.railway.app) with your browser to see the app running.
+
 
 ## Getting Started
 First, install the dependencies for this project.
@@ -29,8 +33,6 @@ Also add the below variable
 _**// used for private/public key with jwt~_**
 
 
-JWT_SECRET = 'Montreal'
-
 
 ## Starting the Server
 Next, run the following command to start the server.
@@ -41,6 +43,7 @@ npm run dev
 yarn dev
 ```
 ## View  the App.
+
 
 Then open the browser and go to http://localhost:3000/
 
