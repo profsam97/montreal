@@ -11,13 +11,8 @@ app.use(express.json())
 
 app.use(router)
 
-export function startServer() {
-    const server = app.listen(port, () => {
+app.listen(port, () => {
         console.log('Running on port ' + port);
-    });
+});
 
-    return server;
-}
-//remember to start this later
-// startServer()
 export default app;
