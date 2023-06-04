@@ -27,6 +27,8 @@ create a database, then get your credentials
 and store it in the env file.
 
 Mongo_URL = 'YOUR DB URL'
+JWT_SECRET = 'Montreal'
+
 
 Also add the below variable
 
