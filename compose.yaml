@@ -1,0 +1,25 @@
+version : '3'
+services:
+  server:
+    image: 15/4114:server
+    ports:
+      - "5000:5000"
+    environment:
+        # for the mongo_url, the @ should be the container name, which is in this case web_db
+        Mongo_URL: 'mongodb://root:example@web_db:27017/'
+        JWT_SECRET: 'Montreal'
+    depends_on: ['web_db'] 
+  
+  web_db:
+    image: mongo
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: example
+    restart: always
+    # port:
+    #   - 8081 :12700
+    volumes:
+      - webapp:/data/db
+
+volumes:
+ webapp: {}
