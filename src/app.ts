@@ -11,8 +11,9 @@ app.use(express.json())
 
 app.use(router)
 
-app.listen(port, () => {
+export const server = app.listen(port, () => {
         console.log('Running on port ' + port);
 });
+
 
 export default app;

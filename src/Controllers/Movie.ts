@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import Movie, {IMovieType} from "../Models/Movie";
 import movie from "../Models/Movie";
+import { ObjectId} from "mongodb";
 import exp from "constants";
 type Tuser = {
     _id: string,
@@ -79,14 +80,13 @@ export const updateMovie = async (req: Request, res: Response) => {
 
 export const deleteMovie = async (req : Request, res: Response) => {
         try {
-            const {id} = req.params;
-            const getMovie : IMovieType | null  = await Movie.findOne({_id: id, createdBy: req.user._id});
+            let {id} = req.params;
+            const getMovie : IMovieType | null  = await Movie.findOne({_id:  new ObjectId(id), createdBy: req.user._id});
             if (!getMovie) return res.status(404).send({message: "Movie not found"});
             await Movie.findByIdAndDelete(id)
             res.status(200).send({message: 'Deleted Successfully'});
         }
         catch (e) {
-            console.log(e)
             res.status(500).send('Internal Server Error')
         }
 }

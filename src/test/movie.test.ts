@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import request from 'supertest';
 import Movie from "../Models/Movie";
-import app from "../app";
+import app, { server } from "../app";
 import {setUpDataBase, userOne} from "./user";
 import {describe, expect, it,  beforeEach, beforeAll, afterAll} from '@jest/globals';
 import {User} from "../Models/User";
@@ -9,9 +9,12 @@ describe('Montech API', () => {
     beforeAll(async () => {
         await mongoose.connect(process.env.Mongo_URL as string);
     }, 10000);
-    afterAll(  (done) => {
+    afterAll((done) => {
          mongoose.connection.close();
-    });
+         server.close(() => {
+            done();
+         });
+    }, 10000);
     beforeEach(async () => {
         await User.deleteMany({});
         await  setUpDataBase();
